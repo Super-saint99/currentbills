@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monthly Current Bill Reminder — WhatsApp</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Monthly Current Bill Reminder</h1>
+      <div class="wh-settings">
+        <input id="defaultPhone" type="tel" placeholder="Default WhatsApp number (optional, e.g., +91XXXXXXXXXX)" />
+        <button id="saveDefault" class="secondary">Save Default</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Add / Edit Renter</h2>
+      <form id="addForm" class="grid">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" required placeholder="Renter name" />
+        </div>
+        <div>
+          <label for="meter">Meter No.</label>
+          <input id="meter" type="text" placeholder="Meter number" />
+        </div>
+        <div>
+          <label for="phone">WhatsApp Number (+countrycode)</label>
+          <input id="phone" type="tel" placeholder="+91XXXXXXXXXX" />
+        </div>
+        <div>
+          <label for="amount">Bill Amount (₹)</label>
+          <input id="amount" type="number" min="0" step="1" placeholder="e.g., 850" />
+        </div>
+        <div>
+          <label for="billed">Date Billed</label>
+          <input id="billed" type="date" />
+        </div>
+        <div>
+          <label for="due">Due Date</label>
+          <input id="due" type="date" />
+        </div>
+
+        <div class="full-row">
+          <label>Bore Bill</label>
+          <div class="bore-group" id="boreGroup">
+            <label><input type="radio" name="bore" value="0" checked /> 0</label>
+            <label><input type="radio" name="bore" value="100" /> ₹100</label>
+            <label><input type="radio" name="bore" value="150" /> ₹150</label>
+            <label><input type="radio" name="bore" value="200" /> ₹200</label>
+          </div>
+        </div>
+
+        <div class="full-row actions">
+          <button type="submit">Add Renter</button>
+          <button type="button" id="resetForm" class="ghost">Clear</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="list-header">
+        <h2>Renters</h2>
+        <div class="list-actions">
+          <button id="sendAll" class="secondary">Prepare WhatsApp for All</button>
+          <button id="clearAll" class="danger">Remove All</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Meter</th>
+              <th>Phone</th>
+              <th>Bill ₹</th>
+              <th>Bore ₹</th>
+              <th>Total ₹</th>
+              <th>Date Billed</th>
+              <th>Due Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="6" class="right">Grand Total</td>
+              <td id="grandTotal">₹0</td>
+              <td colspan="3"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
