@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monthly Current Bill Reminder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Monthly Current Bill Reminder</h1>
+
+    <div class="settings">
+      <input type="text" id="phone" placeholder="Enter your WhatsApp number (+countrycode...)" />
+      <button onclick="saveSettings()">Save Settings</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Bill Amount</th>
+          <th>Bore Bill</th>
+          <th>Date Billed</th>
+          <th>Due Date</th>
+          <th>Meter No.</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="renterList"></tbody>
+    </table>
+
+    <div class="add-person">
+      <input type="text" id="newName" placeholder="Renter Name" />
+      <input type="number" id="newBill" placeholder="Bill Amount" />
+      <input type="date" id="newDateBilled" />
+      <input type="date" id="newDueDate" />
+      <input type="text" id="newMeter" placeholder="Meter No." />
+      <button onclick="addRenter()">Add Renter</button>
+    </div>
+
+    <br>
+    <button onclick="sendSummary()">Send WhatsApp Reminders</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
